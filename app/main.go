@@ -11,8 +11,11 @@ func main() {
 	// Hello world, the web server
 
 	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, LedFx Go!!\n")
-		io.WriteString(w, "Have a good life!\n")
+		err := io.WriteString(w, "Hello, LedFx Go!!\n")
+		err := io.WriteString(w, "Have a good life!\n")
+		if err != nil {
+        panic(err)
+    }
 	}
 
 	c := "#FF55FF"
