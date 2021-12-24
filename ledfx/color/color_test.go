@@ -6,7 +6,7 @@ import (
 
 /*
 Simple module tests should be a table of test cases.
-q is the question, g is the guess, a is the correct answer, e is bool if error expected
+q is the question, g is the guess, a is the correct answer, e is bool if error expected.
 */
 
 func TestNewColor(t *testing.T) {
@@ -24,7 +24,7 @@ func TestNewColor(t *testing.T) {
 	}
 	for _, c := range cases {
 		guess, err := NewColor(c.q)
-		if (c.a != guess) || (err == nil == c.e) { // if the answer is wrong, or the error value is unexpected
+		if (c.a != guess) || (err == nil == c.e) { // if the answer is wrong, or the error value is unexpected.
 			t.Errorf("Failed to parse %s: expected (%v, %v) but got (%v, %v)", c.q, c.a, c.e, guess, err)
 		}
 	}

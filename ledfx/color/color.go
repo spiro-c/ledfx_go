@@ -1,4 +1,4 @@
-// Package color provides basic tools for interpreting colors for LedFX
+// Package color provides basic tools for interpreting colors for LedFX.
 package color
 
 import (
@@ -15,11 +15,11 @@ are sent to the device, are they multiplied up to 256.
 
 var errInvalid = errors.New("invalid color")
 
-// Parses string to ledfx color. "#ff00ff" / "rgb(255,0,255)" -> [1., 0., 1.]
+// Parses string to ledfx color. "#ff00ff" / "rgb(255,0,255)" -> [1., 0., 1.].
 func NewColor(c string) (col [3]float64, err error) {
 	c = strings.ToLower(c)
 	switch c[0:1] {
-	case "r": // "rgb(0, 127, 255)"
+	case "r": // "rgb(0, 127, 255)".
 		c = strings.Replace(c, " ", "", -1)
 		c = strings.TrimLeft(c, "rgb(")
 		c = strings.TrimRight(c, ")")
