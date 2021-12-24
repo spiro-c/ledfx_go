@@ -15,7 +15,7 @@ are sent to the device, are they multiplied up to 256.
 
 var errInvalid = errors.New("invalid color")
 
-// Parses string to ledfx color. "#ff00ff" / "rgb(255,0,255)" -> [1., 0., 1.]
+// Parses string to ledfx color. "#ff00ff" / "rgb(255,0,255)" -> [1., 0., 1.].
 func NewColor(c string) (col [3]float64, err error) {
 	c = strings.ToLower(c)
 	switch c[0:1] {
