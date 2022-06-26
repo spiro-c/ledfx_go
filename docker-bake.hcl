@@ -12,9 +12,15 @@ group "default" {
   targets = ["image-local"]
 }
 
+target "base" {
+  inherits = ["_common"]
+  target = "base"
+  output = ["type=cacheonly"]
+}
+
 target "image" {
   inherits = ["_commons"]
-  tags = ["ledfx:local"]
+  tags = ["ledfx_go:local"]
 }
 
 target "image-local" {
