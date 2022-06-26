@@ -13,7 +13,7 @@ group "default" {
 }
 
 target "base" {
-  inherits = ["_common"]
+  inherits = ["_commons"]
   target = "base"
   output = ["type=cacheonly"]
 }
