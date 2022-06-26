@@ -1,13 +1,13 @@
-name: xgo
+name: build
 
 concurrency:
-  group: xgo-${{ github.ref }}
+  group: ledfx-${{ github.ref }}
   cancel-in-progress: true
 
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     tags:
       - 'v*'
     paths-ignore:
