@@ -1,0 +1,23 @@
+name: Test Coverage
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  codecov:
+    name: Measure Code Test Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.18'
+      - name: Install Required Dependencies
+        run: |
+          echo "Installing dependencies"
+          sudo apt-get install gcc libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0 aubio-tools libaubio-dev libaubio-doc
+      - name: Run coverage
+        run: go test -coverpkg=./... -race -coverprofile=coverage.out -covermode=atomic ./...
+      - name: Upload coverage to Codecov
+        run: bash <(curl -s https://codecov.io/bash)
