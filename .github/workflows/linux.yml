@@ -1,4 +1,4 @@
-name: build
+name: Build linux Binaries
 
 concurrency:
   group: ledfx-${{ github.ref }}

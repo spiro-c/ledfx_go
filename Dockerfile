@@ -17,7 +17,7 @@ RUN apt-get update \
     git \
     libtool \
     lld \
-    pkg-config libc6-dev
+    pkg-config libc6-dev dpkg-dev
 
 WORKDIR /src
 
