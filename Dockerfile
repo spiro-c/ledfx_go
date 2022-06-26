@@ -43,7 +43,7 @@ RUN --mount=type=bind,source=.,rw \
     --files="README.rst"
 #    xx-info env && xx-go build -v -o /out/ledfx-$(xx-info debian-arch)
 FROM scratch AS artifact
-COPY --from=build /out /
+COPY --from=build /out/*.tar.gz /
 
 FROM scratch
 COPY --from=build /usr/local/bin/ledfx /ledfx
