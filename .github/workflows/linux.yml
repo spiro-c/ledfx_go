@@ -60,6 +60,9 @@ jobs:
   build:
     needs: prepare
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: ['linux/amd64', 'linux/arm64', 'linux/arm/v7', 'linux/arm/v6']
     steps:
       -
         name: Checkout
@@ -93,11 +96,13 @@ jobs:
         name: Build artifacts
         uses: docker/bake-action@v2
         with:
-          targets: artifact-all
-      -
-        name: Move artifacts
-        run: |
-          mv ./dist/**/* ./dist/
+          targets: artifact
+          set: |
+            *.platform=${{ matrix.platform }}
+#      -
+#        name: Move artifacts
+#        run: |
+#          mv ./dist/**/* ./dist/
       -
         name: Upload artifacts
         uses: actions/upload-artifact@v3
