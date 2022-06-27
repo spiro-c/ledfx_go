@@ -62,7 +62,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: ['linux/amd64', 'linux/arm64', 'linux/arm/v7', 'linux/arm/v6']
+        os: linux
+        include:
+          - platform: linux/amd64
+            debian-arch: amd64
+          - platform: linux/arm64
+            debian-arch: arm64
+          - platform: linux/arm/v7
+            debian-arch: armhf
+          - platform: linux/arm/v6
+            debian-arch: armel
     steps:
       -
         name: Checkout
@@ -107,7 +116,7 @@ jobs:
         name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: ledfx
+          name: ledfx-${{ matrix.os }}-${{ matrix.debian-arch }}
           path: ./dist/*
           if-no-files-found: error
       -
