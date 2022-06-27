@@ -62,19 +62,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: linux
         include:
           - platform: linux/amd64
-#            os: linux
+            os: linux
             debian-arch: amd64
           - platform: linux/arm64
-#            os: linux
+            os: linux
             debian-arch: arm64
           - platform: linux/arm/v7
-#            os: linux
+            os: linux
             debian-arch: armhf
           - platform: linux/arm/v6
-#            os: linux
+            os: linux
             debian-arch: armel
     steps:
       -
